@@ -5,7 +5,15 @@
 
 <hibernate-configuration>
     <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hiber?useUnicode=true&amp;characterEncoding=utf-8</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">iS2DjccBF</property>
+        <property name="hibernate.connection.pool_size">10</property>
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
         <property name="show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Mapping files -->
         <mapping resource="hbm/Author.hbm.xml"/>
@@ -14,14 +22,6 @@
         <mapping resource="hbm/PriceType.hbm.xml"/>
         <mapping resource="hbm/Publishing.hbm.xml"/>
         <mapping resource="hbm/Keyword.hbm.xml"/>
-        
-        <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hiber?useUnicode=true&amp;characterEncoding=utf-8</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">iS2DjccBF</property>
-        <property name="hibernate.connection.pool_size">10</property>
-        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
     </session-factory>
 </hibernate-configuration>
