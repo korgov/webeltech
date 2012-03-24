@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="hibernate">
+    <CLASSES>
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/lib/required" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/lib/required" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-core/src/main/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-core/src/test/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-core/src/matrix/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-proxool/src/test/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-proxool/src/main/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-ehcache/src/test/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-ehcache/src/main/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-entitymanager/src/test/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-entitymanager/src/matrix/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-entitymanager/src/main/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-testing/src/main/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-infinispan/src/test/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-infinispan/src/main/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/buildSrc/src/main/groovy" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-c3p0/src/test/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-c3p0/src/main/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-envers/src/matrix/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-envers/src/demo/java" />
+      <root url="file:///usr/local/soft/hibernate-release-4.1.1.Final/project/hibernate-envers/src/main/java" />
+    </SOURCES>
+    <jarDirectory url="file:///usr/local/soft/hibernate-release-4.1.1.Final/lib/required" recursive="false" />
+  </library>
+</component>

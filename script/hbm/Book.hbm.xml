@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.korgov.webeltech.storage.model.Book" table="book">
+        <id name="id" type="long" column="id">
+            <generator class="increment"/>
+        </id>
+
+        <property name="name" type="java.lang.String" column="name"/>
+        <property name="arrivalTime" type="java.sql.Date" column="arrival_time"/>
+        <property name="count" type="int" column="count"/>
+        <property name="publishTime" type="java.sql.Date" column="publish_time"/>
+
+        <list name="keywords" cascade="all">
+            <key column="book_id"/>
+            <index column="npp"/>
+            <one-to-many class="ru.korgov.webeltech.storage.model.Keyword"/>
+        </list>
+
+        <many-to-one name="price"
+                     class="ru.korgov.webeltech.storage.model.Price"
+                     column="price" not-null="true" cascade="all" unique="true" />
+
+        <many-to-one name="author"
+                     class="ru.korgov.webeltech.storage.model.Author"
+                     column="author" not-null="true" cascade="none"/>
+
+        <many-to-one name="publishing"
+                     class="ru.korgov.webeltech.storage.model.Publishing"
+                     column="publishing" not-null="true" cascade="none"/>
+
+    </class>
+</hibernate-mapping>
