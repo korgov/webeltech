@@ -11,7 +11,6 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import ru.korgov.util.alias.Cf;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -68,18 +67,18 @@ public class StorageService {
         return Cf.newList(criteria.list(), clazz);
     }
 
-    public static <T> List<T> loadByCriteria(final Class<T> clazz, final Criterion... criterions){
-        try {
-            final Session session = sessionFactory.openSession();
-            try {
-                return loadByCriteria(session, clazz, criterions);
-            } finally {
-                session.flush();
-                session.close();
-            }
-        } catch (Exception e) {
-            log.error("ERROR", e);
-        }
-        return Collections.emptyList();
-    }
+//    public static <T> List<T> loadByCriteria(final Class<T> clazz, final Criterion... criterions){
+//        try {
+//            final Session session = sessionFactory.openSession();
+//            try {
+//                return loadByCriteria(session, clazz, criterions);
+//            } finally {
+//                session.flush();
+//                session.close();
+//            }
+//        } catch (Exception e) {
+//            log.error("ERROR", e);
+//        }
+//        return Collections.emptyList();
+//    }
 }

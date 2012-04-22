@@ -1,6 +1,7 @@
 package ru.korgov.webeltech.storage;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import ru.korgov.webeltech.storage.model.Author;
 import ru.korgov.webeltech.storage.model.Book;
@@ -35,8 +36,8 @@ public class LibraryService {
         StorageService.addObject(priceType);
     }
 
-    public static List<Book> loadBooksByAuthor(final Author... authors){
-        return StorageService.loadByCriteria(Book.class, Restrictions.in("author", authors));
+    public static List<Book> loadBooksByAuthor(final Session session, final Author... authors){
+        return StorageService.loadByCriteria(session, Book.class, Restrictions.in("author", authors));
     }
 
 }
