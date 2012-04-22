@@ -14,6 +14,10 @@ public class Author {
     public Author() {
     }
 
+    public Author(final long id) {
+        this.id = id;
+    }
+
     public Author(final long id, final String name, final Date birthday) {
         this.id = id;
         this.name = name;
@@ -44,7 +48,7 @@ public class Author {
         this.birthday = birthday;
     }
 
-    @SuppressWarnings("RedundantIfStatement")
+    @SuppressWarnings({"RedundantIfStatement", "NonFinalFieldReferenceInEquals", "ControlFlowStatementWithoutBraces"})
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -59,6 +63,7 @@ public class Author {
         return true;
     }
 
+    @SuppressWarnings({"NonFinalFieldReferencedInHashCode", "NumericCastThatLosesPrecision"})
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d] %-5p [%t] %m%n"/>
+        </layout>
+    </appender>
+    <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="1024"/>
+        <appender-ref ref="CONSOLE"/>
+    </appender>
+
+    <appender name="ASYNC_EMAIL" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="1024"/>
+        <appender-ref ref="EVENT_SMTP"/>
+    </appender>
+
+    <category name="org" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="ASYNC"/>
+    </category>
+
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="ASYNC"/>
+    </root>
+</log4j:configuration>
