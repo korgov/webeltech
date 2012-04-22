@@ -45,6 +45,7 @@
     <orderEntry type="library" name="mysql-connector-java-5.1.18-bin" level="project" />
     <orderEntry type="library" name="hibernate" level="project" />
     <orderEntry type="library" name="smartgwt" level="project" />
+    <orderEntry type="library" name="log4j-1.2.16" level="project" />
   </component>
 </module>
 

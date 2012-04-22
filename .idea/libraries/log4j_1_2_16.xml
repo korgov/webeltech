@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="log4j-1.2.16">
+    <CLASSES>
+      <root url="jar:///usr/local/soft/apache-log4j-1.2.16/log4j-1.2.16.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file:///usr/local/soft/apache-log4j-1.2.16/src/performance/java" />
+      <root url="file:///usr/local/soft/apache-log4j-1.2.16/src/main/javadoc" />
+      <root url="file:///usr/local/soft/apache-log4j-1.2.16/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

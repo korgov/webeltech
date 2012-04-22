@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
-  <data-source source="LOCAL" name="hiber-test" product="MySQL" version="5.1.61-0ubuntu0.11.04.1" jdbc-version="4.0" driver-version="mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )" uuid="2429a28d-5074-4b29-892d-71db0a1d4377">
+  <data-source source="LOCAL" name="hiber-test" product="MySQL" version="5.1.61-0ubuntu0.11.04.1" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )" uuid="2429a28d-5074-4b29-892d-71db0a1d4377" case-sensitive="true">
     <extra-name-characters>#@</extra-name-characters>
     <identifier-quote-string>`</identifier-quote-string>
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
     <jdbc-url>jdbc:mysql://localhost:3306/hiber</jdbc-url>
     <user-name>root</user-name>
-    <user-password>dfdfdfebdf9bdfebdfc2dfccdfc1dfc6dfc6dfe4dfed</user-password>
+    <user-password>dfc0dfecdfeedf9ddf99dff9dfc2dfd9</user-password>
     <schema-pattern>hiber.*</schema-pattern>
     <default-dialect>MySQL</default-dialect>
     <libraries>
@@ -32,6 +32,9 @@
       <index name="FK2E3AE9FFC77841" unique="false" columns="publishing" />
       <index name="FK2E3AE9D94FD657" unique="false" columns="price" />
       <index name="FK2E3AE91DD847F1" unique="false" columns="author" />
+      <index name="FK2E3AE9DB5CFBBE" unique="false" columns="publishing" />
+      <index name="FK2E3AE9698B58BA" unique="false" columns="price" />
+      <index name="FK2E3AE9950D11EE" unique="false" columns="author" />
     </table>
     <table name="keyword" schema="" catalog="hiber" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
@@ -40,6 +43,7 @@
       <column name="npp" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
       <primary-key name="PRIMARY" columns="id" />
       <index name="FKCF751DE923689CB5" unique="false" columns="book_id" />
+      <index name="FKCF751DE93051C1F2" unique="false" columns="book_id" />
     </table>
     <table name="price" schema="" catalog="hiber" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
@@ -47,6 +51,7 @@
       <column name="type" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
       <primary-key name="PRIMARY" columns="id" />
       <index name="FK65FB149E57980A2" unique="false" columns="type" />
+      <index name="FK65FB149D971985" unique="false" columns="type" />
     </table>
     <table name="price_type" schema="" catalog="hiber" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
