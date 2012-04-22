@@ -40,4 +40,8 @@ public class LibraryService {
         return StorageService.loadByCriteria(session, Book.class, Restrictions.in("author", authors));
     }
 
+    public static List<Author> loadAuthors(final Session session){
+        return StorageService.loadByCriteria(session, Author.class);
+    }
+
 }
