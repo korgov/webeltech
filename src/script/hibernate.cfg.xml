@@ -18,12 +18,12 @@
 
 
         <!-- Mapping files -->
-        <mapping resource="hbm/Author.hbm.xml"/>
-        <mapping resource="hbm/Book.hbm.xml"/>
-        <mapping resource="hbm/Price.hbm.xml"/>
-        <mapping resource="hbm/PriceType.hbm.xml"/>
-        <mapping resource="hbm/Publishing.hbm.xml"/>
-        <mapping resource="hbm/Keyword.hbm.xml"/>
+        <mapping resource="script/hbm/Author.hbm.xml"/>
+        <mapping resource="script/hbm/Book.hbm.xml"/>
+        <mapping resource="script/hbm/Price.hbm.xml"/>
+        <mapping resource="script/hbm/PriceType.hbm.xml"/>
+        <mapping resource="script/hbm/Publishing.hbm.xml"/>
+        <mapping resource="script/hbm/Keyword.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>
