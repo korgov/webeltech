@@ -44,4 +44,12 @@ public class LibraryService {
         return StorageService.loadByCriteria(session, Author.class);
     }
 
+    public static List<Publishing> loadPublishings(final Session session){
+        return StorageService.loadByCriteria(session, Publishing.class);
+    }
+
+    public static List<PriceType> loadPriceTypes(final Session session){
+        return StorageService.loadByCriteria(session, PriceType.class);
+    }
+
 }

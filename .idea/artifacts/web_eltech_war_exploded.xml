@@ -2,7 +2,6 @@
   <artifact type="exploded-war" name="web-eltech:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/web_eltech_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="web-eltech/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="web-eltech" />
@@ -16,6 +15,8 @@
         </element>
       </element>
       <element id="gwt-compiler-output" facet="web-eltech/gwt/GWT" />
+      <element id="javaee-facet-resources" facet="web-eltech/web/Web" />
+      <element id="directory" name="META-INF" />
     </root>
   </artifact>
 </component>

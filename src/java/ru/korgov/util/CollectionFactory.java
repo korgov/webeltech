@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -43,5 +44,9 @@ public class CollectionFactory {
 
     public static <K, V> Map<K, V> newMap(final Map<K, V> map){
         return new HashMap<K, V>(map);
+    }
+
+    public static <K, V> LinkedHashMap<K, V> newLinkedMap() {
+        return new LinkedHashMap<K, V>();
     }
 }
