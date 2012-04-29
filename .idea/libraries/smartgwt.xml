@@ -2,10 +2,12 @@
   <library name="smartgwt">
     <CLASSES>
       <root url="jar:///usr/local/soft/smartgwt-3.0/smartgwt.jar!/" />
+      <root url="jar:///usr/local/soft/smartgwt-3.0/smartgwt-skins.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="jar:///usr/local/soft/smartgwt-3.0/smartgwt.jar!/" />
+      <root url="jar:///usr/local/soft/smartgwt-3.0/smartgwt-skins.jar!/" />
     </SOURCES>
   </library>
 </component>

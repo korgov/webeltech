@@ -1,2 +1,5 @@
 /** Add css rules here for your application. */
 
+label, input, textarea, div, td, body {
+    font-size: 12pt;
+}

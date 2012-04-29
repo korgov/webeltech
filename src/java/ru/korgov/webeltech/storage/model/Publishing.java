@@ -16,6 +16,10 @@ public class Publishing {
         this.name = name;
     }
 
+    public Publishing(final long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }
@@ -32,7 +36,7 @@ public class Publishing {
         this.name = name;
     }
 
-    @SuppressWarnings("RedundantIfStatement")
+    @SuppressWarnings({"RedundantIfStatement", "ControlFlowStatementWithoutBraces", "NonFinalFieldReferenceInEquals"})
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -46,6 +50,7 @@ public class Publishing {
         return true;
     }
 
+    @SuppressWarnings({"NonFinalFieldReferencedInHashCode", "NumericCastThatLosesPrecision"})
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));

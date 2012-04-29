@@ -6,16 +6,20 @@ package ru.korgov.webeltech.storage.model;
  */
 public class Price {
     private long id;
-    private int value;
+    private double value;
     private PriceType priceType;
 
     public Price() {
     }
 
-    public Price(final long id, final int value, final PriceType priceType) {
+    public Price(final long id, final double value, final PriceType priceType) {
         this.id = id;
         this.value = value;
         this.priceType = priceType;
+    }
+
+    public Price(final long id, final double value) {
+        this(id, value, new PriceType(1L, "руб"));
     }
 
     public long getId() {
@@ -26,11 +30,11 @@ public class Price {
         this.id = id;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
-    public void setValue(final int value) {
+    public void setValue(final double value) {
         this.value = value;
     }
 
@@ -42,7 +46,7 @@ public class Price {
         this.priceType = priceType;
     }
 
-    @SuppressWarnings("RedundantIfStatement")
+    @SuppressWarnings({"ControlFlowStatementWithoutBraces", "NonFinalFieldReferenceInEquals", "RedundantIfStatement"})
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -51,19 +55,26 @@ public class Price {
         final Price price = (Price) o;
 
         if (id != price.id) return false;
-        if (value != price.value) return false;
+        if (Double.compare(price.value, value) != 0) return false;
         if (priceType != null ? !priceType.equals(price.priceType) : price.priceType != null) return false;
 
         return true;
     }
 
+    @SuppressWarnings({"ConditionalExpressionWithNegatedCondition", "NonFinalFieldReferencedInHashCode", "NumericCastThatLosesPrecision", "TooBroadScope", "UnaryPlus"})
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + value;
+        int result;
+        final long temp;
+        result = (int) (id ^ (id >>> 32));
+        temp = value != +0.0d ? Double.doubleToLongBits(value) : 0L;
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (priceType != null ? priceType.hashCode() : 0);
         return result;
     }
+
+    @SuppressWarnings({"RedundantIfStatement", "ControlFlowStatementWithoutBraces", "FloatingPointEquality", "NonFinalFieldReferenceInEquals"})
+
 
     @Override
     public String toString() {

@@ -1,5 +1,9 @@
 package ru.korgov.webeltech.storage.model;
 
+import ru.korgov.util.alias.Cf;
+
+import java.util.List;
+
 /**
  * Author: Kirill Korgov (korgov@yandex-team.ru)
  * Date: 18.03.12
@@ -8,7 +12,7 @@ public class Keyword {
     private long id;
     private String value;
 
-    public Keyword(final long id, final long bookId, final String value) {
+    public Keyword(final long id, final String value) {
         this.id = id;
         this.value = value;
     }
@@ -37,7 +41,7 @@ public class Keyword {
         this.value = value;
     }
 
-    @SuppressWarnings("RedundantIfStatement")
+    @SuppressWarnings({"RedundantIfStatement", "ControlFlowStatementWithoutBraces", "NonFinalFieldReferenceInEquals"})
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -51,6 +55,7 @@ public class Keyword {
         return true;
     }
 
+    @SuppressWarnings({"NonFinalFieldReferencedInHashCode", "NumericCastThatLosesPrecision"})
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
@@ -64,5 +69,13 @@ public class Keyword {
                 "id=" + id +
                 ", value='" + value + '\'' +
                 '}';
+    }
+
+    public static List<Keyword> createFromStrings(final List<String> keywords){
+        final List<Keyword> out = Cf.newList();
+        for (final String keyword : keywords) {
+            out.add(new Keyword(keyword));
+        }
+        return out;
     }
 }

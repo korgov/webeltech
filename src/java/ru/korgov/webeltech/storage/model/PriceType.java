@@ -11,6 +11,10 @@ public class PriceType {
     public PriceType() {
     }
 
+    public PriceType(final long id) {
+        this.id = id;
+    }
+
     public PriceType(final long id, final String name) {
         this.id = id;
         this.name = name;

@@ -12,6 +12,6 @@
         <property name="value" type="int" column="value"/>
         <many-to-one name="priceType"
                      class="ru.korgov.webeltech.storage.model.PriceType"
-                     column="type" not-null="true" cascade="none"/>
+                     column="type" not-null="true" cascade="none" />
     </class>
 </hibernate-mapping>

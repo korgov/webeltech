@@ -9,6 +9,9 @@ import ru.korgov.webeltech.storage.LibraryService;
 import ru.korgov.webeltech.storage.SessionTask;
 import ru.korgov.webeltech.storage.StorageService;
 import ru.korgov.webeltech.storage.model.Author;
+import ru.korgov.webeltech.storage.model.Book;
+import ru.korgov.webeltech.storage.model.Keyword;
+import ru.korgov.webeltech.storage.model.Price;
 import ru.korgov.webeltech.storage.model.PriceType;
 import ru.korgov.webeltech.storage.model.Publishing;
 
@@ -83,4 +86,24 @@ public class ClientServiceImpl extends RemoteServiceServlet implements ClientSer
         });
         return out;
     }
+
+
+    @Override
+    public void addBook(final long authorId, final long publishingId, final String name, final int publishYear, final double price, final int count, final List<String> keywords){
+        try {
+            final Book book = new Book(-1L);
+            book.setAuthor(new Author(authorId));
+            book.setCount(count);
+            book.setName(name);
+            book.setPrice(new Price(-1L, price));
+            book.setPublishing(new Publishing(publishingId));
+            book.setArrivalTime(new Date(System.currentTimeMillis()));
+            book.setPublishTime(Date.valueOf(String.valueOf(publishYear + "-01-01")));
+            book.setKeywords(Keyword.createFromStrings(keywords));
+            LibraryService.addBook(book);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

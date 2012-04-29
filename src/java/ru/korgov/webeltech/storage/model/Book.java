@@ -1,6 +1,7 @@
 package ru.korgov.webeltech.storage.model;
 
 import java.sql.Date;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -30,6 +31,25 @@ public class Book {
     private int count;
     private Date arrivalTime;
     private List<Keyword> keywords;
+
+    public Book(final long id) {
+        this.id = id;
+    }
+
+    public Book(final long id, final Author author, final Publishing publishing, final String name, final Date publishTime, final Price price, final int count, final Date arrivalTime, final List<Keyword> keywords) {
+        this.id = id;
+        this.author = author;
+        this.publishing = publishing;
+        this.name = name;
+        this.publishTime = publishTime;
+        this.price = price;
+        this.count = count;
+        this.arrivalTime = arrivalTime;
+        this.keywords = keywords;
+    }
+
+    public Book() {
+    }
 
     public long getId() {
         return id;
@@ -96,14 +116,14 @@ public class Book {
     }
 
     public List<Keyword> getKeywords() {
-        return keywords;
+        return Collections.unmodifiableList(keywords);
     }
 
     public void setKeywords(final List<Keyword> keywords) {
         this.keywords = keywords;
     }
 
-    @SuppressWarnings("RedundantIfStatement")
+    @SuppressWarnings({"RedundantIfStatement", "NonFinalFieldReferenceInEquals", "ControlFlowStatementWithoutBraces", "OverlyComplexMethod"})
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
@@ -124,6 +144,7 @@ public class Book {
         return true;
     }
 
+    @SuppressWarnings({"NonFinalFieldReferencedInHashCode", "NumericCastThatLosesPrecision"})
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
