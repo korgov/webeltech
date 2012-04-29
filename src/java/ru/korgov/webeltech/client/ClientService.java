@@ -4,7 +4,6 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 
 /**
  * The client side stub for the RPC service.
@@ -18,5 +17,5 @@ public interface ClientService extends RemoteService {
 
     LinkedHashMap<String, String> getPriceTypesValueMap();
 
-    void addBook(long authorId, long publishingId, String name, int publishYear, double price, int count, List<String> keywords);
+    void addBook(long authorId, long publishingId, String name, int publishYear, double price, int count, String[] keywords);
 }

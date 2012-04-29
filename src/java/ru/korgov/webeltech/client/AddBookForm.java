@@ -14,7 +14,6 @@ import com.smartgwt.client.widgets.form.fields.IntegerItem;
 import com.smartgwt.client.widgets.form.fields.SelectItem;
 import com.smartgwt.client.widgets.form.fields.TextAreaItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
-import ru.korgov.util.alias.Cu;
 import ru.korgov.webeltech.client.async.CallbacksFactory;
 
 public class AddBookForm implements EntryPoint {
@@ -54,7 +53,7 @@ public class AddBookForm implements EntryPoint {
                         bookPublishingYear.getValueAsInteger(),
                         bookPriceValue.getValueAsFloat(),
                         bookCount.getValueAsInteger(),
-                        Cu.list(bookKeywords.getValueAsString().split("\\s*[,;]+\\s*")),
+                        bookKeywords.getValueAsString().split("\\s*[,;]+\\s*"),
                         CallbacksFactory.<Void>newDoNothingCallback("Can't add author!")
                 );
             }

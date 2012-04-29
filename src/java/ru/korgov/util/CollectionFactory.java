@@ -1,6 +1,7 @@
 package ru.korgov.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,6 +20,10 @@ public class CollectionFactory {
 
     public static <T> List<T> newList(){
         return new ArrayList<T>();
+    }
+
+    public static <T> List<T> list(final T... items){
+        return Arrays.asList(items);
     }
 
     public static <T> List<T> newList(final Collection<T> c){

@@ -46,7 +46,7 @@ public class StorageService {
                 session.close();
             }
         } catch (Exception e) {
-            log.error(e);
+            log.error("",e);
         }
     }
 

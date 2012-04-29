@@ -4,6 +4,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import ru.korgov.util.alias.Cf;
+import ru.korgov.util.alias.Cu;
 import ru.korgov.webeltech.client.ClientService;
 import ru.korgov.webeltech.storage.LibraryService;
 import ru.korgov.webeltech.storage.SessionTask;
@@ -89,17 +90,17 @@ public class ClientServiceImpl extends RemoteServiceServlet implements ClientSer
 
 
     @Override
-    public void addBook(final long authorId, final long publishingId, final String name, final int publishYear, final double price, final int count, final List<String> keywords){
+    public void addBook(final long authorId, final long publishingId, final String name, final int publishYear, final double price, final int count, final String[] keywords){
         try {
             final Book book = new Book(-1L);
             book.setAuthor(new Author(authorId));
             book.setCount(count);
             book.setName(name);
-            book.setPrice(new Price(-1L, price));
+            book.setPrice(Cf.list(new Price(-1L, price)));
             book.setPublishing(new Publishing(publishingId));
             book.setArrivalTime(new Date(System.currentTimeMillis()));
             book.setPublishTime(Date.valueOf(String.valueOf(publishYear + "-01-01")));
-            book.setKeywords(Keyword.createFromStrings(keywords));
+            book.setKeywords(Keyword.createFromStrings(Cu.list(keywords)));
             LibraryService.addBook(book);
         } catch (Exception e) {
             throw new RuntimeException(e);

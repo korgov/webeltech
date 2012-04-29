@@ -27,7 +27,7 @@ public class Book {
     private Publishing publishing;
     private String name;
     private Date publishTime;
-    private Price price;
+    private List<Price> price;
     private int count;
     private Date arrivalTime;
     private List<Keyword> keywords;
@@ -36,7 +36,7 @@ public class Book {
         this.id = id;
     }
 
-    public Book(final long id, final Author author, final Publishing publishing, final String name, final Date publishTime, final Price price, final int count, final Date arrivalTime, final List<Keyword> keywords) {
+    public Book(final long id, final Author author, final Publishing publishing, final String name, final Date publishTime, final List<Price> price, final int count, final Date arrivalTime, final List<Keyword> keywords) {
         this.id = id;
         this.author = author;
         this.publishing = publishing;
@@ -91,11 +91,11 @@ public class Book {
         this.publishTime = publishTime;
     }
 
-    public Price getPrice() {
-        return price;
+    public List<Price> getPrice() {
+        return Collections.unmodifiableList(price);
     }
 
-    public void setPrice(final Price price) {
+    public void setPrice(final List<Price> price) {
         this.price = price;
     }
 

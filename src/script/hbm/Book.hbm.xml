@@ -20,9 +20,18 @@
             <one-to-many class="ru.korgov.webeltech.storage.model.Keyword"/>
         </list>
 
-        <many-to-one name="price"
-                     class="ru.korgov.webeltech.storage.model.Price"
-                     column="price" not-null="true" cascade="all" unique="true" />
+        <list name="price" cascade="all">
+            <key column="book_id"/>
+            <index column="npp"/>
+            <one-to-many class="ru.korgov.webeltech.storage.model.Price"/>
+        </list>
+
+        <!--<one-to-one name="price"-->
+                    <!--class="ru.korgov.webeltech.storage.model.Price" cascade="none"/>-->
+
+        <!--<many-to-one name="price"-->
+                     <!--class="ru.korgov.webeltech.storage.model.Price"-->
+                     <!--column="price" not-null="true" cascade="all" property-ref="id"/>-->
 
         <many-to-one name="author"
                      class="ru.korgov.webeltech.storage.model.Author"

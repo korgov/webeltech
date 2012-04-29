@@ -22,6 +22,10 @@ public class Price {
         this(id, value, new PriceType(1L, "руб"));
     }
 
+    public Price(final double value) {
+        this(0L, value);
+    }
+
     public long getId() {
         return id;
     }
