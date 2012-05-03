@@ -54,7 +54,7 @@ public class AddBookForm implements EntryPoint {
                         bookPriceValue.getValueAsFloat(),
                         bookCount.getValueAsInteger(),
                         bookKeywords.getValueAsString().split("\\s*[,;]+\\s*"),
-                        CallbacksFactory.<Void>newDoNothingCallback("Can't add author!")
+                        CallbacksFactory.<Void>newDoNothingCallback("Can't add book!")
                 );
             }
         });

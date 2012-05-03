@@ -5,7 +5,7 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
     <welcome-file-list>
-        <welcome-file>add/book.html</welcome-file>
+        <welcome-file>/add/book.html</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -14,7 +14,17 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>clienServiceServlet</servlet-name>
-        <url-pattern>/add_book/valuesMap</url-pattern>
+        <url-pattern>/add_book/clienService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>clienServiceServlet</servlet-name>
+        <url-pattern>/add_publishing/clienService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>clienServiceServlet</servlet-name>
+        <url-pattern>/add_author/clienService</url-pattern>
     </servlet-mapping>
 
 </web-app>

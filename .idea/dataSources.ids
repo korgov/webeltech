@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
-  <data-source source="LOCAL" name="hiber-test" product="MySQL" version="5.1.61-0ubuntu0.11.04.1" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )" uuid="2429a28d-5074-4b29-892d-71db0a1d4377" case-sensitive="true">
+  <data-source source="LOCAL" name="hiber-test" product="MySQL" version="5.1.62-0ubuntu0.11.04.1" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )" uuid="2429a28d-5074-4b29-892d-71db0a1d4377" case-sensitive="true">
     <extra-name-characters>#@</extra-name-characters>
     <identifier-quote-string>`</identifier-quote-string>
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
@@ -24,16 +24,10 @@
       <column name="arrival_time" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91" />
       <column name="count" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="publish_time" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91" />
-      <column name="price" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
       <column name="author" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
       <column name="publishing" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
       <primary-key name="PRIMARY" columns="id" />
-      <index name="price" unique="true" columns="price" />
-      <index name="FK2E3AE9FFC77841" unique="false" columns="publishing" />
-      <index name="FK2E3AE9D94FD657" unique="false" columns="price" />
-      <index name="FK2E3AE91DD847F1" unique="false" columns="author" />
       <index name="FK2E3AE9DB5CFBBE" unique="false" columns="publishing" />
-      <index name="FK2E3AE9698B58BA" unique="false" columns="price" />
       <index name="FK2E3AE9950D11EE" unique="false" columns="author" />
     </table>
     <table name="keyword" schema="" catalog="hiber" type="TABLE">
@@ -42,16 +36,15 @@
       <column name="book_id" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
       <column name="npp" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
       <primary-key name="PRIMARY" columns="id" />
-      <index name="FKCF751DE923689CB5" unique="false" columns="book_id" />
       <index name="FKCF751DE93051C1F2" unique="false" columns="book_id" />
     </table>
     <table name="price" schema="" catalog="hiber" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
-      <column name="value" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
-      <column name="type" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="value" sqlType="DOUBLE" length="22" precision="0" nullable="true" jdbcType="8" />
+      <column name="book_id" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <column name="npp" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
       <primary-key name="PRIMARY" columns="id" />
-      <index name="FK65FB149E57980A2" unique="false" columns="type" />
-      <index name="FK65FB149D971985" unique="false" columns="type" />
+      <index name="FK65FB1493051C1F2" unique="false" columns="book_id" />
     </table>
     <table name="price_type" schema="" catalog="hiber" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />

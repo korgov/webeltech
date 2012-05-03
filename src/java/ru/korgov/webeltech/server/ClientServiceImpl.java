@@ -92,16 +92,39 @@ public class ClientServiceImpl extends RemoteServiceServlet implements ClientSer
     @Override
     public void addBook(final long authorId, final long publishingId, final String name, final int publishYear, final double price, final int count, final String[] keywords){
         try {
-            final Book book = new Book(-1L);
+            final Book book = new Book();
             book.setAuthor(new Author(authorId));
             book.setCount(count);
             book.setName(name);
-            book.setPrice(Cf.list(new Price(-1L, price)));
+            book.setPrice(Cf.list(new Price(price)));
             book.setPublishing(new Publishing(publishingId));
             book.setArrivalTime(new Date(System.currentTimeMillis()));
             book.setPublishTime(Date.valueOf(String.valueOf(publishYear + "-01-01")));
             book.setKeywords(Keyword.createFromStrings(Cu.list(keywords)));
             LibraryService.addBook(book);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void addAuthor(final String name, final Date birthday){
+        try {
+            final Author author = new Author();
+            author.setName(name);
+            author.setBirthday(birthday);
+            LibraryService.addAuthor(author);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void addPublishing(final String name){
+        try {
+            final Publishing publishing = new Publishing();
+            publishing.setName(name);
+            LibraryService.addPublishing(publishing);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

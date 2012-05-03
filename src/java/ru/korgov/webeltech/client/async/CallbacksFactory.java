@@ -12,8 +12,6 @@ import java.util.LinkedHashMap;
  */
 public class CallbacksFactory {
 
-
-
     private CallbacksFactory() {
     }
 
@@ -21,7 +19,8 @@ public class CallbacksFactory {
         return new AsyncCallback<T>() {
             @Override
             public void onFailure(final Throwable t) {
-                SC.say(errorMessage);
+                t.printStackTrace();
+                SC.say(errorMessage + " :: "+ t.getMessage());
             }
             @Override
             public void onSuccess(final T ignored) {
