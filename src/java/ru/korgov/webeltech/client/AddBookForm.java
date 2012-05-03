@@ -36,7 +36,7 @@ public class AddBookForm implements EntryPoint {
         final ClientServiceAsync clientService = GWT.create(ClientService.class);
         initForm(clientService);
 
-        submitButton = new IButton("Submit");
+        submitButton = new IButton("Добавить Книгу");
 
         submitButton.addClickHandler(new ClickHandler() {
             @Override

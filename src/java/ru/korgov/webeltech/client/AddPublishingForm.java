@@ -25,7 +25,7 @@ public class AddPublishingForm implements EntryPoint {
         final ClientServiceAsync clientService = GWT.create(ClientService.class);
         initForm(clientService);
 
-        submitButton = new IButton("Submit");
+        submitButton = new IButton("Добавить издательство");
 
 
         submitButton.addClickHandler(new ClickHandler() {
