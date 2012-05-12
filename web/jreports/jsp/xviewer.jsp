@@ -5,6 +5,7 @@
 <%@ page import="net.sf.jasperreports.engine.JasperFillManager" %>
 <%@ page import="net.sf.jasperreports.engine.JasperPrint" %>
 <%@ page import="net.sf.jasperreports.engine.JasperReport" %>
+<%@ page import="net.sf.jasperreports.engine.design.JasperDesign" %>
 <%@ page import="net.sf.jasperreports.engine.export.JRHtmlExporterParameter" %>
 <%@ page import="net.sf.jasperreports.engine.export.JRXhtmlExporter" %>
 <%@ page import="net.sf.jasperreports.engine.util.JRLoader" %>
@@ -14,12 +15,23 @@
 <%@ page import="ru.korgov.webeltech.reports.datasource.WebappDataSource" %>
 <%@ page import="java.io.File" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="net.sf.jasperreports.engine.JasperCompileManager" %>
+<%@ page import="java.io.FileInputStream" %>
+<%@ page import="ru.korgov.webeltech.reports.datasource.BooksDataSource" %>
+<%@ page import="ru.korgov.webeltech.storage.LibraryService" %>
+<%@ page import="ru.korgov.webeltech.storage.StorageService" %>
+<%@ page import="ru.korgov.webeltech.storage.SessionTask" %>
+<%@ page import="org.hibernate.Session" %>
+<%@ page import="java.util.concurrent.atomic.AtomicReference" %>
+<%@ page import="net.sf.jasperreports.engine.JRException" %>
 
 <%
-    JasperPrint jasperPrint = (JasperPrint) session.getAttribute(ImageServlet.DEFAULT_JASPER_PRINT_SESSION_ATTRIBUTE);
+    final AtomicReference<JasperPrint> jasperPrint = new AtomicReference<JasperPrint>((JasperPrint) session.getAttribute(ImageServlet.DEFAULT_JASPER_PRINT_SESSION_ATTRIBUTE));
     final String reportName = request.getParameter("report");
 
-    if (request.getParameter("reload") != null || jasperPrint == null) {
+    final Session hiberSession = StorageService.getSessionFactory().openSession();
+
+    if (request.getParameter("reload") != null || jasperPrint.get() == null) {
         final String s = "WebappReport.jasper";
         if (Su.isEmpty(reportName)) {
             throw new JRRuntimeException(
@@ -28,32 +40,36 @@
                             "for 'jreports/reports/WebappReport.jasper')"
             );
         }
-        final File reportFile = new File(application.getRealPath("jreports/reports/" + reportName + ".jasper"));
-        if (!reportFile.exists()) {
-            throw new JRRuntimeException("File WebappReport.jasper not found. The report design must be compiled first.");
+        final String reportFullName = "jreports/reports/" + reportName;
+        final File compiledFile = new File(application.getRealPath(reportFullName + ".jasper"));
+        final JasperReport jasperReport;
+        if (!compiledFile.exists()) {
+            final File sourceFile = new File(application.getRealPath(reportFullName + ".jrxml"));
+            jasperReport = JasperCompileManager.compileReport(new FileInputStream(sourceFile));
+        } else {
+            jasperReport = (JasperReport) JRLoader.loadObject(compiledFile);
         }
-
-        final JasperReport jasperReport = (JasperReport) JRLoader.loadObject(reportFile);
 
         final Map<String, Object> parameters = Cf.newMap();
         parameters.put("ReportTitle", "Books by Authors");
-        parameters.put("BaseDir", reportFile.getParentFile());
+        parameters.put("BaseDir", compiledFile.getParentFile());
 
-        jasperPrint =
+        jasperPrint.set(
                 JasperFillManager.fillReport(
                         jasperReport,
                         parameters,
-                        new WebappDataSource()
-                );
+                        new BooksDataSource(LibraryService.loadBooks(hiberSession))
+                )
+        );
 
-        session.setAttribute(ImageServlet.DEFAULT_JASPER_PRINT_SESSION_ATTRIBUTE, jasperPrint);
+        session.setAttribute(ImageServlet.DEFAULT_JASPER_PRINT_SESSION_ATTRIBUTE, jasperPrint.get());
     }
 
     final JRXhtmlExporter exporter = new JRXhtmlExporter();
 
     int lastPageIndex = 0;
-    if (jasperPrint.getPages() != null) {
-        lastPageIndex = jasperPrint.getPages().size() - 1;
+    if (jasperPrint.get().getPages() != null) {
+        lastPageIndex = jasperPrint.get().getPages().size() - 1;
     }
 
     final String pageStr = request.getParameter("page");
@@ -73,7 +89,7 @@
 
     final StringBuffer sbuffer = new StringBuffer();
 
-    exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+    exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint.get());
     exporter.setParameter(JRExporterParameter.OUTPUT_STRING_BUFFER, sbuffer);
     exporter.setParameter(JRHtmlExporterParameter.IMAGES_URI, "../servlets/image?image=");
     exporter.setParameter(JRExporterParameter.PAGE_INDEX, Integer.valueOf(pageIndex));
@@ -82,6 +98,9 @@
     exporter.setParameter(JRHtmlExporterParameter.HTML_FOOTER, "");
 
     exporter.exportReport();
+
+    hiberSession.flush();
+    hiberSession.close();
 %>
 
 <html>
@@ -91,6 +110,11 @@
     <style type="text/css">
         a {
             text-decoration: none
+        }
+        .but{
+            weight: bold;
+            text-decoration: underline;
+            font-size: 12pt;
         }
     </style>
 </head>
@@ -130,6 +154,8 @@
                     <%
                         }
                     %>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><a href="../servlets/pdf" class="but">Save&nbsp;as&nbsp;PDF</a></td>
                     <td width="100%">&nbsp;</td>
                 </tr>
             </table>
@@ -149,3 +175,4 @@
 </table>
 </body>
 </html>
+

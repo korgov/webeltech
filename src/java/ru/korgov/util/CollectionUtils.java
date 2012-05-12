@@ -1,5 +1,7 @@
 package ru.korgov.util;
 
+import com.sun.istack.internal.Nullable;
+
 import java.util.*;
 
 /**
@@ -54,6 +56,12 @@ public class CollectionUtils {
             mm.put(key, values);
         }
         values.add(value);
+    }
+
+    @Nullable
+    public static <T> T firstOrNull(final Collection<T> c){
+        final Iterator<T> iterator = c.iterator();
+        return iterator.hasNext() ? iterator.next() : null;
     }
     
 }
