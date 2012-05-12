@@ -48,6 +48,8 @@
     <orderEntry type="library" name="hibernate" level="project" />
     <orderEntry type="library" name="smartgwt" level="project" />
     <orderEntry type="library" name="log4j-1.2.16" level="project" />
+    <orderEntry type="library" name="jasper-reports" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
 

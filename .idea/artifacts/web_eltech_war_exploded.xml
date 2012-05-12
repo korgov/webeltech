@@ -12,6 +12,8 @@
           <element id="library" level="project" name="hibernate" />
           <element id="library" level="project" name="smartgwt" />
           <element id="library" level="project" name="log4j-1.2.16" />
+          <element id="library" level="project" name="jasper-reports" />
+          <element id="library" level="project" name="lib" />
         </element>
       </element>
       <element id="gwt-compiler-output" facet="web-eltech/gwt/GWT" />
