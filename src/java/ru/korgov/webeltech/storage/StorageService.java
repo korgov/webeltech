@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import ru.korgov.util.alias.Cf;
@@ -59,11 +60,22 @@ public class StorageService {
         });
     }
 
-    public static <T> List<T> loadByCriteria(final Session session, final Class<T> clazz, final Criterion... criterions){
+    public static <T> List<T> loadByCriteria(final Session session, final Class<T> clazz){
+        return loadByCriteria(session, clazz, null);
+    }
+
+    public static <T> List<T> loadByCriteria(final Session session, final Class<T> clazz, final Order order, final Criterion... criterions){
         final Criteria criteria = session.createCriteria(clazz);
         for(final Criterion criterion : criterions){
             criteria.add(criterion);
         }
+        addOrder(criteria, order);
         return Cf.newList(criteria.list(), clazz);
+    }
+
+    private static void addOrder( final Criteria criteria, final Order order) {
+        if(order != null){
+            criteria.addOrder(order);
+        }
     }
 }
